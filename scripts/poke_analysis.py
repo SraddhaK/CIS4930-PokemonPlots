@@ -8,7 +8,7 @@ import numpy as np
 
 
 #read in data
-df = pd.read_csv("data/pokemon.csv")
+df = pd.read_csv("data/raw/pokemon.csv")
 
 
 #.loc (fire(
