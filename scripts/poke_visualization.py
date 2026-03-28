@@ -9,7 +9,7 @@ stats_by_gen = pd.read_csv("data/processed/pokemon_stats_by_gen.csv")
 stats_by_gen["generation"] = range(1, 9) # 8 generations
 poke_data = pd.read_csv("data/processed/pokemon_clean.csv")
 
-# For visualizing potential power creep(just using atk and speed stats since they're most relevant)
+# Line graph - Visualizing potential power creep(just using atk and speed stats since they're most relevant)
 fig, ax = plt.subplots(figsize=(10, 6)) # about a couple inches larger than default figsize
 stats = ["total_points", "attack", "sp_attack", "speed"]
 for stat in stats:
@@ -23,7 +23,7 @@ fig.savefig("figures/power_creep_by_generation.png", dpi=300)
 plt.show()
 # no obvious signs of power creep, minimal increase in total power after first few gens
 
-# Greatest power type(fire, water, etc.) in terms of total points (bar plot)
+# Bar plot - Greatest power type(fire, water, etc.) in terms of total points
 type_data = poke_data[["type_1", "type_2", "total_points"]].copy() # doesnt affect original dataframe
 
 # melt(pandas) merges type_1 and type_2 -> single column so both types are counted
@@ -38,11 +38,24 @@ mean_power_by_type = type_long.groupby("type")["total_points"].mean().sort_value
 
 fig, ax = plt.subplots(figsize=(12, 6))
 sns.barplot(data=mean_power_by_type, x="type", y="total_points", palette="rocket", ax=ax)
-
 ax.set_title("Average Total Power by Pokémon Type")
 ax.set_xlabel("Type")
 ax.set_ylabel("Mean Total Points")
 plt.xticks(rotation=45, ha="right")
 fig.tight_layout()
 fig.savefig("figures/power_by_type.png", dpi=300)
+plt.show()
+# Dragon is clearly strongest and bug is weakest in terms of power
+
+# Histogram - Most common pokemon type
+type_counts = type_long["type"].value_counts().reset_index() # counts number of unique types, reset index transforms back to column (pandas)
+
+fig, ax = plt.subplots(figsize=(12, 6))
+sns.barplot(data=type_counts, x="type", y="count", palette="mako", ax=ax)
+ax.set_title("Most Frequent Pokémon Typings")
+ax.set_xlabel("Type")
+ax.set_ylabel("Number of Pokémon")
+plt.xticks(rotation=45, ha="right")
+fig.tight_layout()
+fig.savefig("figures/type_frequency.png", dpi=300)
 plt.show()
