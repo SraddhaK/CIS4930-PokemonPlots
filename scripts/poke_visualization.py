@@ -1,7 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-#from matplotlib.lines import lineStyles
 
 sns.set_theme(style="whitegrid")
 
@@ -37,7 +36,7 @@ type_long = type_long[type_long["type"] != "None"]  # keeps only the rows where 
 mean_power_by_type = type_long.groupby("type")["total_points"].mean().sort_values(ascending=False).reset_index()
 
 fig, ax = plt.subplots(figsize=(12, 6))
-sns.barplot(data=mean_power_by_type, x="type", y="total_points", palette="rocket", ax=ax)
+sns.barplot(data=mean_power_by_type, x="type", y="total_points", palette="rocket", hue="type", legend=False, ax=ax)
 ax.set_title("Average Total Power by Pokémon Type")
 ax.set_xlabel("Type")
 ax.set_ylabel("Mean Total Points")
@@ -51,7 +50,7 @@ plt.show()
 type_counts = type_long["type"].value_counts().reset_index() # counts number of unique types, reset index transforms back to column (pandas)
 
 fig, ax = plt.subplots(figsize=(12, 6))
-sns.barplot(data=type_counts, x="type", y="count", palette="mako", ax=ax)
+sns.barplot(data=type_counts, x="type", y="count", palette="mako", hue="type", legend=False, ax=ax)
 ax.set_title("Most Frequent Pokémon Typings")
 ax.set_xlabel("Type")
 ax.set_ylabel("Number of Pokémon")
@@ -59,3 +58,26 @@ plt.xticks(rotation=45, ha="right")
 fig.tight_layout()
 fig.savefig("figures/type_frequency.png", dpi=300)
 plt.show()
+# Most frequent type: water
+# Least frequent type: ice
+
+# Scatter plot - Attack power comparison between most frequent type and other types
+most_frequent = type_counts.iloc[0]["type"]  # grabs whichever type ranked #1 which is water (automatically sorted Descending)
+poke_data["highlight"] = poke_data.apply( # new column "highlight": assignes all water types to most frequent, other to other
+    lambda row: most_frequent if most_frequent in (row["type_1"], row["type_2"]) else "Other",
+    axis=1
+)
+
+fig, ax = plt.subplots(figsize=(10, 6))
+sns.scatterplot(data=poke_data, x="attack", y="sp_attack", 
+                hue="highlight", palette={"Other": "lightgray", most_frequent: "blue"},
+                alpha=0.7, ax=ax)
+ax.set_title(f"Water type Pokémon: Attack vs Sp. Attack Compared to Other Types")
+ax.set_xlabel("Attack")
+ax.set_ylabel("Special Attack")
+ax.legend(title="Type")
+fig.tight_layout()
+fig.savefig("figures/type_stat_comparison.png", dpi=300)
+plt.show()
+# Seems to be fairly balanced, although there are many water types, they trend about average in terms of atk power
+# Some are very strong but there are many other strong pokemon of other types
