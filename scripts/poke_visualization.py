@@ -20,6 +20,7 @@ ax.legend(title="Stat")
 fig.tight_layout() # auto adjust spacing inside figure: no cutoff
 fig.savefig("figures/power_creep_by_generation.png", dpi=300)
 plt.show()
+# SUMMARY/KEY FINDINGS
 # no obvious signs of power creep, minimal increase in total power after first few gens
 
 # Bar plot - Greatest power type(fire, water, etc.) in terms of total points
@@ -44,6 +45,7 @@ plt.xticks(rotation=45, ha="right")
 fig.tight_layout()
 fig.savefig("figures/power_by_type.png", dpi=300)
 plt.show()
+# SUMMARY/KEY FINDINGS
 # Dragon is clearly strongest and bug is weakest in terms of power
 
 # Histogram - Most common pokemon type
@@ -58,6 +60,7 @@ plt.xticks(rotation=45, ha="right")
 fig.tight_layout()
 fig.savefig("figures/type_frequency.png", dpi=300)
 plt.show()
+# SUMMARY/KEY FINDINGS
 # Most frequent type: water
 # Least frequent type: ice
 
@@ -79,5 +82,6 @@ ax.legend(title="Type")
 fig.tight_layout()
 fig.savefig("figures/type_stat_comparison.png", dpi=300)
 plt.show()
+# SUMMARY/KEY FINDINGS
 # Seems to be fairly balanced, although there are many water types, they trend about average in terms of atk power
 # Some are very strong but there are many other strong pokemon of other types
