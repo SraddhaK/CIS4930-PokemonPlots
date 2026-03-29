@@ -5,4 +5,4 @@ Dataset: https://www.kaggle.com/datasets/mariotormo/complete-pokemon-dataset-upd
 Research Questions:
   - How do changes in Pokemon power levels across new iterations of the game affect power creep(where power/stats increase over time)?
   - Which Pokemon typing(fire, water, etc.) has the greatest power?
-  - What is the most frequent typing and how do the base stats compare to other types?
+  - What is the most frequent typing and how do the attack stats compare to other types?
