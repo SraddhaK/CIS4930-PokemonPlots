@@ -9,7 +9,7 @@ A central repository housing a collection of independent projects. Each project 
 ├── Pokeplots/
 │   ├── README.md
 │   └── ...
-├── Florida Weather API/
+├── Data Pipeline/
 │   ├── README.md
 │   └── ...
 └── project-three/
@@ -23,8 +23,8 @@ Each top-level directory is a self-contained project. Refer to the individual `R
 
 | Project | Description | Status |
 |---------|-------------|--------|
-| [project-one](./PokePlots) | Analyzes trends over Pokemon games and visualizes data to support claims | Active |
-| [project-two](./Florida Weather API) | Makes API calls to weather API to record and analyze weather of major Florida cities | Active |
+| [PokePlots](./Project1PokePlots) | Analyzes trends over Pokemon games and visualizes data to support claims | Active |
+| [Data Pipeline](./Project2DataPipeline) | Makes API calls to weather API to record and analyze weather of major Florida cities | Active |
 | [project-three](./project-three) | Awaiting assignment | Waiting for Details |
 
 # The Team
