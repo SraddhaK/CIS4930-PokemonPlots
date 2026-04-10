@@ -23,8 +23,8 @@ Each top-level directory is a self-contained project. Refer to the individual `R
 
 | Project | Description | Status |
 |---------|-------------|--------|
-| [PokePlots](./Project1PokePlots) | Analyzes trends over Pokemon games and visualizes data to support claims | Active |
-| [Data Pipeline](./Project2DataPipeline) | Makes API calls to weather API to record and analyze weather of major Florida cities | Active |
+| [PokePlots](./Project1PokemonPlots) | Analyzes trends over Pokemon games and visualizes data to support claims | Active |
+| [Data Pipeline](./Project2WeatherDataPipeline) | Makes API calls to weather API to record and analyze weather of major Florida cities | Active |
 | [project-three](./project-three) | Awaiting assignment | Waiting for Details |
 
 # The Team
