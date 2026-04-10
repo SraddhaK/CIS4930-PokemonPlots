@@ -4,9 +4,15 @@
 
 import requests
 import logging
+import os
+from datetime import date, timedelta
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LOG_DIR = os.path.join(BASE_DIR, "..", "logs")
+os.makedirs(LOG_DIR, exist_ok=True)
 
 logging.basicConfig(
-    filename="pipeline_error.log",
+    filename=os.path.join(LOG_DIR, "pipeline_error.log"),
     level=logging.ERROR,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
@@ -20,10 +26,12 @@ cities = [
     {"name": "Orlando, FL",     "latitude": 28.54, "longitude": -81.38},
 ]
 
+yesterday = date.today() - timedelta(days=1)
+
 # Define parameters to pull data from and make API calls to
 base_params = {
-    "start_date": "2026-03-23",
-    "end_date": "2026-04-06",
+    "start_date": yesterday.isoformat(),
+    "end_date": yesterday.isoformat(),
     "hourly": "temperature_2m",
     "temperature_unit": "fahrenheit",
     "wind_speed_unit": "mph",
