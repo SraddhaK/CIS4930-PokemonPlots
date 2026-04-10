@@ -1,5 +1,5 @@
 
-The Team: Sam Miller (SSM23A), Sofie Szlezak (SSS23J), Aiden Duncan (AJD24C), Sraddha Karthik (SK23BJ)
+The Team: Sam Miller (SSM23A) section 4.4, Sofie Szlezak (SSS23J) section 4.3, Aiden Duncan (AJD24C) section 4.2, Sraddha Karthik (SK23BJ) section 4.1
 This Python code analyzes various Pokemon attributes over multiple generations to find discrepancies and make comparisons in aspects like weight, attack power, and power creep over time. With over 1000 Pokemon and several types, each with their own power mechanics, it's important to evaluate whether the game keeps a balance between typing and overall power between Pokemon, as over time, some games experience older characters/features becoming obsolete as newer ones are created with greater power/influence to engage players.
 Original Dataset: https://www.kaggle.com/datasets/mariotormo/complete-pokemon-dataset-updated-090420
 Fits Requirements: CSV, 1028 rows, 53 columns, over 4 numeric and 2 categorical columns, category: entertainment

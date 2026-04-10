@@ -1,1 +1,17 @@
+# Python
+.venv/
 venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Data / outputs
+*.db
+*.sqlite
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

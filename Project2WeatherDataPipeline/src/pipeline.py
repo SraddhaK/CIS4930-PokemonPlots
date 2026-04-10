@@ -5,7 +5,10 @@
 import requests
 import logging
 import os
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
+
+import pandas as pd
+from storage import load_to_csv, load_to_sqlite, DATA_DIR
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_DIR = os.path.join(BASE_DIR, "..", "logs")
@@ -90,7 +93,15 @@ for city in cities:
                     }
                     all_records.append(record) # Save data in JSON format
 
+# Save to CSV and SQLite
 print(f"\nTotal records aggregated: {len(all_records)}")
-print(all_records[:5])   # First 5 - should be Tallahassee
-print(all_records[360:365])  # Should be Miami
-print(all_records[720:725])  # Should be Orlando
+
+if all_records:
+    df = pd.DataFrame(all_records)
+    csv_path = DATA_DIR / f"weather_{datetime.today().date()}.csv"
+    load_to_csv(df, csv_path)
+    load_to_sqlite(df, DATA_DIR / "weather.db")
+    print(f"Saved {len(df)} records to {csv_path} and weather.db")
+else:
+    print("No records to save - all API calls failed.")
+    logging.error("Pipeline completed with zero records")
